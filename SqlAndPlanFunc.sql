@@ -1,3 +1,7 @@
+-- This function allow you to take the relevant information about execution plans from sql server which were executed on your sql server
+-- Params : Requested => query plan handle (binary identifier)
+
+
 CREATE function SqlAndPlan(@handle varbinary(max))
 returns table as
 return select sql.text, 
