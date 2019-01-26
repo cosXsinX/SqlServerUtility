@@ -16,3 +16,11 @@ from
 	join sys.dm_exec_cached_plans as cp
 	on cp.plan_handle = @handle
 go
+					     
+-- This view allow you to see the cached plans for every sql query that are on your sql server
+CREATE view PlanCache
+as 
+select sp.* from sys.dm_exec_cached_plans as cp
+	cross apply SqlAndPlan(cp.plan_handle) as sp
+
+go
